@@ -2,7 +2,7 @@
 
 const sendMessage = require('./lib/message');
 const getFact = require('./lib/fact');
-const { processFact, handleError, handleSuccess } = require('./lib/helpers');
+const { handleError, handleSuccess } = require('./lib/helpers');
 
 module.exports.run = (event, context, callback) => {
   getFact()
