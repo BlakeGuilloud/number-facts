@@ -1,0 +1,4 @@
+FACT_API: http://numbersapi.com/random/trivia
+ACCOUNT_SID: SuchSecrets
+ACCOUNT_TOKEN: SuchSecrets
+FROM_NUMBER: +18434201265

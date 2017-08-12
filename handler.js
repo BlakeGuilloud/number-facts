@@ -1,16 +1,12 @@
 'use strict';
 
-module.exports.hello = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+const sendMessage = require('./lib/message');
+const getFact = require('./lib/fact');
+const { processFact, handleError, handleSuccess } = require('./lib/helpers');
 
-  callback(null, response);
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+module.exports.run = (event, context, callback) => {
+  getFact()
+    .then(sendMessage)
+    .then(message => callback(null, handleSuccess(message)))
+    .catch(err => callback(null, handleError(err)));
 };
