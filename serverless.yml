@@ -15,6 +15,10 @@ provider:
       Action:
         - dynamodb:Scan
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    - Effect: "Allow"
+      Action:
+        - "lambda:*"
+      Resource: "arn:aws:lambda:us-east-1:055809122680:function:twilio-services-dev-send-message"
 
 functions:
   send:
